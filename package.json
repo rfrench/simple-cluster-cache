@@ -1,0 +1,29 @@
+{
+  "name": "cache-cluster",
+  "description": "cluster object cache",
+  "version": "0.0.1",
+  "homepage": "https://github.com/rfrench/cache-cluster",
+  "bugs": "https://github.com/rfrench/cache-cluster/issues",
+  "author": {
+    "name": "Ryan French",
+    "email": "frenchrya@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rfrench/cache-cluster"
+  },
+  "engines": {
+    "node": ">=0.10.32"
+  },
+  "main": "./index.js",
+  "dependencies": {
+    "simpleflake": "0.1.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0",
+    "chai": "^1.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
