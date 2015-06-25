@@ -1,1 +1,1 @@
-module.exports = require('./lib/cache-cluster');
+module.exports = require('./lib/cluster-cache');

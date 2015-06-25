@@ -1,16 +1,16 @@
 {
-  "name": "cache-cluster",
-  "description": "cluster object cache",
+  "name": "simple-cluster-cache",
+  "description": "simple cluster object cache",
   "version": "0.0.1",
-  "homepage": "https://github.com/rfrench/cache-cluster",
-  "bugs": "https://github.com/rfrench/cache-cluster/issues",
+  "homepage": "https://github.com/rfrench/simple-cluster-cache",
+  "bugs": "https://github.com/rfrench/simple-cluster-cache/issues",
   "author": {
     "name": "Ryan French",
     "email": "frenchrya@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rfrench/cache-cluster"
+    "url": "https://github.com/rfrench/simple-cluster-cache"
   },
   "engines": {
     "node": ">=0.10.32"
