@@ -14,6 +14,14 @@ if (cluster.isMaster) {
   cluster.on('exit', function(worker, code, signal) {
     cluster.fork();
   });
+
+  // preload some keys just to demonstrate it works from the master thread
+  cache.set('hello', 'word');
+  cache.set('object', { 'hello': 'world' });
+  cache.set('array', [ 1, 2, 3 ]);
+  cache.set('callback', true, function(err, value) {
+    console.log('successfully set "callback" to %s', value);
+  });
 }
 else {
   var app = express();
@@ -22,7 +30,7 @@ else {
   app.get('/:key', function(req, res, next) {
     var key = req.params.key;
     cache.get(key, function(err, value) {
-      res.end(value);
+      res.json(value);
     });
   });
 
@@ -32,7 +40,7 @@ else {
     var value = req.params.value;
 
     cache.set(key, value, function(err, value) {
-      res.end(value);
+      res.json(value);
     });
   });
 
@@ -41,7 +49,7 @@ else {
     var key = req.params.key;
     
     cache.del(key, function(err) {
-      res.end(key + ' was deleted.');
+      res.json(key + ' was deleted.');
     });
   });
 
