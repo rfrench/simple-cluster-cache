@@ -1,4 +1,4 @@
-# simple-cluster-cache
+# simple-cluster-cache [![NPM version](https://badge.fury.io/js/simple-cluster-cache.png)](http://badge.fury.io/js/simple-cluster-cache)
 Dead simple cluster based object cache for node.js.
 
 ## Install
