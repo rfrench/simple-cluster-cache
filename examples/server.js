@@ -6,6 +6,7 @@ var express = require('express');
 var os = require('os');
 
 if (cluster.isMaster) {
+
   var cpus = os.cpus().length;
   for (var i = 0; i < cpus; i++) {
     cluster.fork();
@@ -16,7 +17,7 @@ if (cluster.isMaster) {
   });
 
   // preload some keys just to demonstrate it works from the master thread
-  cache.set('hello', 'word');
+  cache.set('hello', 'world', 5000);
   cache.set('object', { 'hello': 'world' });
   cache.set('array', [ 1, 2, 3 ]);
   cache.set('callback', true, function(err, value) {
@@ -35,17 +36,18 @@ else {
   });
 
   // sets the cache value
-  app.post('/:key/:value', function(req, res, next) {
+  app.post('/:key/:value/:ttl?', function(req, res, next) {
     var key = req.params.key;
     var value = req.params.value;
+    var ttl = req.params.ttl;
 
-    cache.set(key, value, function(err, value) {
+    cache.set(key, value, ttl, function(err, value) {
       res.json(value);
     });
   });
 
   // deletes the cache key
-  app.del('/:key', function(req, res, next) {
+  app.delete('/:key', function(req, res, next) {
     var key = req.params.key;
     
     cache.del(key, function(err) {
@@ -53,5 +55,6 @@ else {
     });
   });
 
-  app.listen(process.env.PORT || 8000);
+  var server = app.listen(process.env.PORT || 8000);
+  module.exports = server;
 }

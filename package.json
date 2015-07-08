@@ -1,7 +1,7 @@
 {
   "name": "simple-cluster-cache",
   "description": "simple cluster object cache",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/rfrench/simple-cluster-cache",
   "bugs": "https://github.com/rfrench/simple-cluster-cache/issues",
   "author": {
