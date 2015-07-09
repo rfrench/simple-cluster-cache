@@ -55,6 +55,5 @@ else {
     });
   });
 
-  var server = app.listen(process.env.PORT || 8000);
-  module.exports = server;
+  app.listen(process.env.PORT || 8000);
 }
