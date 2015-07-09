@@ -7,17 +7,17 @@ $ npm install simple-cluster-cache
 ```
 
 ## Methods
-- `get(key, callback)`. Gets the value from cache. Returns undefined if the value does not exist.
-    - `key` The unique cache object key.
-    - `callback` The optional callback function.
-- `set(key, value, ttl, callback)`. Sets a cache object for the specified key.
-    - `key` The unique cache object key.
-    - `value` The cache object value.
-    - `ttl` The optional time to live on the cache object. (milliseconds)
-    - `callback` The optional callback function. 
-- `del(key, callback)`. Deletes a key from cache.
-    - `key` The unique cache object key.
-    - `callback` The optional callback function.
+- `get(key, callback)` - Gets the value from cache. Returns undefined if the value does not exist.
+    - `key`: The unique cache object key.
+    - `callback`: The optional callback function.
+- `set(key, value, ttl, callback)` - Sets a cache object for the specified key.
+    - `key`: The unique cache object key.
+    - `value`: The cache object value.
+    - `ttl`: The optional time to live on the cache object. (milliseconds)
+    - `callback`: The optional callback function. 
+- `del(key, callback)` - Deletes a key from cache.
+    - `key`: The unique cache object key.
+    - `callback`: The optional callback function.
 
 ## Usage
 ``` js
