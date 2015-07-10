@@ -1,5 +1,5 @@
 # simple-cluster-cache [![Build Status](https://api.travis-ci.org/rfrench/simple-cluster-cache.svg?branch=master)](https://travis-ci.org/rfrench/simple-cluster-cache) [![NPM version](https://badge.fury.io/js/simple-cluster-cache.png)](http://badge.fury.io/js/simple-cluster-cache)
-Dead simple cluster based object cache for node.js.
+Dead simple in-memory cache that allows the master process and the worker processes to share the same object cache.
 
 ## Install
 ```bash
