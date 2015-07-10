@@ -1,5 +1,5 @@
 # simple-cluster-cache [![Build Status](https://api.travis-ci.org/rfrench/simple-cluster-cache.svg?branch=master)](https://travis-ci.org/rfrench/simple-cluster-cache) [![NPM version](https://badge.fury.io/js/simple-cluster-cache.png)](http://badge.fury.io/js/simple-cluster-cache)
-Dead simple in-memory cache that allows the master process and the worker processes to share the same object cache.
+Dead simple cluster based in-memory cache that allows the master process and the worker processes to share the same object cache.
 
 ## Install
 ```bash
@@ -8,7 +8,7 @@ $ npm install simple-cluster-cache
 
 ## Methods
 - `get(key, callback)` - Gets the value from cache. Returns undefined if the value does not exist.
-    - `key`: The unique cache object key.
+    - `key`: The unique cache object key or an array of keys.
     - `callback`: The optional callback function.
 - `set(key, value, ttl, callback)` - Sets a cache object for the specified key.
     - `key`: The unique cache object key.
@@ -16,7 +16,9 @@ $ npm install simple-cluster-cache
     - `ttl`: The optional time to live on the cache object. (milliseconds)
     - `callback`: The optional callback function. 
 - `del(key, callback)` - Deletes a key from cache.
-    - `key`: The unique cache object key.
+    - `key`: The unique cache object key or an array of keys.
+    - `callback`: The optional callback function.
+- `clear(callback)` - Clears the cache.
     - `callback`: The optional callback function.
 
 ## Usage
@@ -25,13 +27,35 @@ cache.set('hello', 'world', function(err, value) {
   console.log(value);
 });
 
+cache.set('world', 'hello', function(err, value) {
+  console.log(value);
+});
+
+// single get
 cache.get('hello', function(err, value) {
   // prints 'world'
   console.log(value);
 });
 
+// multi get
+cache.get(['hello', 'world'], function(err, value) {
+  // prints '{ 'hello': 'world', 'world': 'hello' }'
+  console.log(value);
+});
+
+// single delete
 cache.del('hello', function(err) {
   console.log('deleted');  
+});
+
+// multi delete
+cache.del(['hello', 'world'], function(err) {
+  console.log('deleted');  
+});
+
+// clears the entire cache
+cache.clear(function() {
+  console.log('cache cleared!');
 });
 ```
 
