@@ -1,9 +1,10 @@
 {
   "name": "simple-cluster-cache",
   "description": "simple cluster object cache",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "homepage": "https://github.com/rfrench/simple-cluster-cache",
   "bugs": "https://github.com/rfrench/simple-cluster-cache/issues",
+  "license": "MIT",
   "author": {
     "name": "Ryan French",
     "email": "frenchrya@gmail.com"
@@ -12,10 +13,16 @@
     "type": "git",
     "url": "https://github.com/rfrench/simple-cluster-cache"
   },
-  "engines": {
-    "node": ">=0.10.32"
-  },
+  "keywords": [
+    "cache",
+    "cluster",
+    "worker",
+    "master"
+  ],
   "main": "./index.js",
+  "dependencies": {
+    "shortid": "^2.2.2"
+  },
   "devDependencies": {
     "mocha": "^2.1.0",
     "chai": "^1.10.0"

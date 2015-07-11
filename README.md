@@ -64,7 +64,7 @@ cache.clear(function() {
 'use strict';
 
 var cluster = require('cluster');
-var cache = require('../lib/cluster-cache');
+var cache = require('simple-cluster-cache');
 var express = require('express');
 var os = require('os');
 
@@ -80,6 +80,7 @@ if (cluster.isMaster) {
   });
 
   // preload some keys just to demonstrate it works from the master thread
+  cache.clear();
   cache.set('hello', 'world', 5000);
   cache.set('object', { 'hello': 'world' });
   cache.set('array', [ 1, 2, 3 ]);
@@ -115,6 +116,14 @@ else {
     
     cache.del(key, function(err) {
       res.json(key + ' was deleted.');
+    });
+  });
+
+  // clears the cache
+  app.purge('/clear', function(req, res, next) {
+    console.log('clear')
+    cache.clear(function() {
+      res.json('cache cleared!');
     });
   });
 
